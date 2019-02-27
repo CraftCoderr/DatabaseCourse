@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
+    <changeSet id="lab1_1" author="naklyshko">
+        <sql dbms="mysql">
+            CREATE TABLE exam (
+                speciality_code VARCHAR(255) NOT NULL,
+                school_name VARCHAR(255) NOT NULL,
+                passport_number VAR-CHAR(255) NOT NULL,
+                subject_id SMALLINT NOT NULL,
+                mark TINYINT NOT NULL CONSTRAINT CHECK(mark BETWEEN 1 AND 100,
+                PRIMARY KEY (speciality_code, school_name, passport_number, subject_id))
+        </sql>
+        <rollback>DROP TABLE high_education.exam</rollback>
+        <insert tableName="exam">
+            <column name="speciality_code" value="09.03.01"/>
+            <column name="school_name" value="СевГУ"/>
+            <column name="passport_number" value="1234456789"/>
+            <column name="subject_id" valueNumeric="1"/>
+            <column name="mark" valueNumeric="90"/>
+        </insert>
+        <insert tableName="exam">
+            <column name="speciality_code" value="09.03.02"/>
+            <column name="school_name" value="СевГУ"/>
+            <column name="passport_number" value="0914123456"/>
+            <column name="subject_id" valueNumeric="2"/>
+            <column name="mark" valueNumeric="94"/>
+        </insert>
+    </changeSet>
+    <changeSet id="lab1_2" author="naklyshko">
+        <sql>ALTER TABLE exam ADD COLUMN test_column INT NOT NULL DEFAULT 0 AFTER school_name</sql>
+        <rollback>ALTER TABLE DROP COLUMN test_column</rollback>
+    </changeSet>
+    <changeSet id="lab1_3" author="naklyshko">
+        <sql>ALTER TABLE exam MODIFY COLUMN school_name VARCHAR(255) NOT NULL AFTER test_column</sql>
+        <rollback>ALTER TABLE exam MODIFY COLUMN test_column INT NOT NULL DEFAULT 0 AFTER school_name</rollback>
+    </changeSet>
+    <changeSet id="lab1_4" author="naklyshko">
+        <sql>ALTER TABLE exam DROP COLUMN test_column</sql>
+    </changeSet>
+    <changeSet id="lab1_5" author="naklyshko">
+        <sql>CREATE TABLE test_table (id INT AUTO_INCREMENT PRIMARY KEY, col1 VARCHAR(255) NOT NULL, col2 INT DEFAULT 0)</sql>
+        <rollback>DROP TABLE test_table</rollback>
+    </changeSet>
+    <changeSet id="lab1_6" author="naklyshko">
+        <sql>DROP TABLE test_table</sql>
+    </changeSet>
+</databaseChangeLog>
