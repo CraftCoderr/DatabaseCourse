@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
+    <changeSet id="structure" author="naklyshko" >
+        <createTable tableName="exam">
+            <column name="speciality_code" type="VARCHAR(255)"/>
+            <column name="school_name" type="VARCHAR(255)"/>
+            <column name="passport_number" type="VARCHAR(255)"/>
+            <column name="subject_id" type="SMALLINT"/>
+            <column name="" type="TINYINT"/>
+        </createTable>
+        <createTable tableName="subject">
+            <column name="id" type="SMALLINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+        <createTable tableName="school_enrollees">
+            <column name="school_name" type="VARCHAR(255)"/>
+            <column name="passport_number" type="VARCHAR(255)"/>
+            <column name="speciality_code" type="VARCHAR(255)"/>
+        </createTable>
+        <createTable tableName="enrollee">
+            <column name="passport_number" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+        <createTable tableName="school_specialities">
+            <column name="school_name" type="VARCHAR(255)"/>
+            <column name="speciality_code" type="VARCHAR(255)"/>
+            <column name="capacity" type="SMALLINT"/>
+        </createTable>
+        <createTable tableName="speciality">
+            <column name="speciality_code" type="VARCHAR(255)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="training_mode" type="VARCHAR(255)"/>
+            <column name="training_period" type="TINYINT"/>
+        </createTable>
+        <createTable tableName="school">
+            <column name="school_name" type="VARCHAR(255)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="level" type="TINYINT"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
