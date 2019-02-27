@@ -9,9 +9,10 @@
             CREATE TABLE exam (
                 speciality_code VARCHAR(255) NOT NULL,
                 school_name VARCHAR(255) NOT NULL,
-                passport_number VAR-CHAR(255) NOT NULL,
+                passport_number VARCHAR(255) NOT NULL,
                 subject_id SMALLINT NOT NULL,
-                mark TINYINT NOT NULL CONSTRAINT CHECK(mark BETWEEN 1 AND 100,
+                mark TINYINT NOT NULL,
+                CONSTRAINT CHECK(mark BETWEEN 1 AND 100),
                 PRIMARY KEY (speciality_code, school_name, passport_number, subject_id))
         </sql>
         <rollback>DROP TABLE high_education.exam</rollback>
