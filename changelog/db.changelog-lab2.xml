@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
+    <changeSet id="lab2_1" author="naklyshko">
+        <sql>INSERT INTO exam(speciality_code, school_name, passport_number, subject_id, mark) VALUES ('09.03.02', 'СевГУ', '0914123457', 4, 85)</sql>
+        <sql>INSERT INTO exam(speciality_code, school_name, passport_number, subject_id, mark) VALUES ('09.03.01', 'СевГУ', '0914128757', 5, 80)</sql>
+        <sql>INSERT INTO exam(speciality_code, school_name, passport_number, subject_id, mark) VALUES ('09.03.02', 'СевГУ', '0914543457', 4, 81)</sql>
+        <sql>INSERT INTO exam(speciality_code, school_name, passport_number, subject_id, mark) VALUES ('09.03.02', 'СевГУ', '0914123457', 4, 85)</sql>
+        <sql>
+            INSERT INTO exam(speciality_code, school_name, passport_number, subject_id, mark) VALUES
+                ('09.03.01', 'СевГУ', '1234987645', 3, 91), ('09.03.01', 'СевГУ', '4334987645', 3, 84),
+                ('09.03.03', 'СевГУ', '1234964345', 3, 74), ('09.03.02', 'СевГУ', '4387987645', 3, 95),
+                ('09.03.01', 'СевГУ', '1237777645', 3, 80), ('09.03.02', 'СевГУ', '1111987645', 3, 98)
+        </sql>
+    </changeSet>
+    <changeSet id="lab2_2" author="naklyshko">
+        <sql>UPDATE exam SET speciality_code='09.03.03', mark=73 WHERE speciality_code='09.03.02' AND school_name='СевГУ' AND passport_number='1111987645' AND subject_id=3</sql>
+    </changeSet>
+    <changeSet id="lab2_3" author="naklyshko">
+        <sql>UPDATE exam SET speciality_code='09.03.03' WHERE subject_id=3</sql>
+    </changeSet>
+    <changeSet id="lab2_4" author="naklyshko">
+        <sql>DELETE FROM exam WHERE subject_id=3</sql>
+    </changeSet>
+</databaseChangeLog>
