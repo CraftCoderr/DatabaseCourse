@@ -9,3 +9,7 @@ INSERT INTO exam(speciality_code, school_name, passport, subject_id, mark) VALUE
 INSERT INTO school_specialities(school_name, speciality_code, capacity) VALUES ('СевГУ', '09.03.07', 40);
 INSERT INTO school_enrollees(passport, school_name, speciality_code) VALUES ('1111111111', 'СевГУ', '09.03.01');
 INSERT INTO exam(speciality_code, school_name, passport, subject_id, mark) VALUES ('09.03.01', 'СевГУ', '1122334455', 1, 84);
+# Проверка ограничений при обновлении и удалении
+UPDATE enrollee SET passport='1234567891' WHERE passport='1234567890';
+UPDATE enrollee SET passport='1234567890' WHERE passport='1234567891';
+DELETE FROM school WHERE name='СевГУ';
