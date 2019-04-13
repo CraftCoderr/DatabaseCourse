@@ -8,4 +8,5 @@
   <include file="changelog/db.changelog-lab2.xml"/>
   <include file="changelog/db.changelog-lab3.xml"/>
   <include file="changelog/db.changelog-lab4.sql"/>
+  <include file="changelog/db.changelog-lab6.sql"/>
 </databaseChangeLog>
